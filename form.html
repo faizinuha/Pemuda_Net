@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" class="pscode" />
+
+  <!-- My CSS -->
+  <link rel="stylesheet" href="css/style.css" class="rel pscode" />
+  <link rel="stylesheet" href="css/navbar_animation.css" class="rel pscode" />
+  <link rel="stylesheet" href="css/form.css" class="rel pscode" /> <!-- Add this line -->
+
+  <!-- My fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <title>Daftar - Mynet</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <section class="navbar-sec">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light ">
+      <div class="container">
+        <button class="navbar-toggler text-danger third-button" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <div class="animated-icon3"><span></span><span></span><span></span></div>
+        </button>
+        <a class="navbar-brand" href="#">My</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Beranda<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Produk</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-expanded="false">Promo </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Bantuan</a>
+                <a class="dropdown-item" href="#">Tentang Kami</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bantuan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a href="form.html" type="button" class="btn tombol1">Daftar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- Form Section -->
+  <section id="form-sec">
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-side-image">
+            <img src="img/people.png" alt="registration" class="img-fluid">
+            <h2 class="text-center mt-4">Bergabung dengan Mynet</h2>
+            <p class="text-center">Dapatkan layanan internet terbaik untuk kebutuhan Anda</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h1 class="title text-center">Daftar Sekarang</h1>
+          <form id="registrationForm">
+            <div class="form-group">
+              <label for="paket">Pilihan Paket</label>
+              <select class="form-control" id="paket" name="paket">
+                <option value="hemat">Hemat - 15 MBPS (Rp 250.000)</option>
+                <option value="pas">Pas - 30 MBPS (Rp 320.000)</option>
+                <option value="super">Super - 50 MBPS (Rp 400.000)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Lengkap">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Nomor Telepon</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Masukkan Nomor Telepon">
+            </div>
+            <div class="form-group">
+              <label for="address">Alamat</label>
+              <textarea class="form-control" id="address" rows="1" placeholder="Masukkan Alamat"></textarea>
+            </div>
+            <button type="submit" class="btn tombol1 btn-block"  >Daftar via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer-sec">
+    <div class="container text-center">
+      <p>&copy; 2023 Mynet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/jquery.slim.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Bantuan - Mynet</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      crossorigin="anonymous" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/navbar_animation.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f7f9fc;
+      }
+      .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2193b0;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .accordion .card {
+        border: none;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: 0.3s ease;
+      }
+      .accordion .btn-link {
+        color: #2193b0;
+        font-weight: 600;
+        text-decoration: none;
+        width: 100%;
+        text-align: left;
+      }
+      .accordion .card-body {
+        font-size: 0.9rem;
+        justify-content: space-between;
+        display: flex;
+        color: #444;
+      }
+      .contact-section {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 3rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+      .contact-card {
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: 0.3s;
+      }
+      .contact-card:hover {
+        background: #e3f2fd;
+      }
+      .contact-card i {
+        color: #2193b0;
+        margin-bottom: 0.5rem;
+      }
+      footer {
+        background: linear-gradient(to right, #1a237e, #2193b0);
+        padding: 3rem 0;
+        color: #fff;
+      }
+      .tombol {
+        background: #2193b0;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+      .tombol:hover {
+        background: #176179;
+      }
+      h2{
+      margin-top: 35px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">My</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="form.html">Produk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="promo.html">Promo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bantuan.html">Bantuan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn tombol" href="form.html">Daftar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Help Section -->
+    <div class="container mt-5 pt-5">
+      <h2 class="title" data-aos="fade-down">Pusat Bantuan</h2>
+      <div class="accordion row" id="faqAccordion">
+        <div class="col-md-4 mb-3" data-aos="fade-up">
+          <div class="card h-100">
+            <div class="card-header">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1">
+                Bagaimana cara berlangganan Mynet?
+              </button>
+            </div>
+            <div id="collapse1" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                <ol>
+                  <li>Klik tombol "Daftar" di menu navigasi</li>
+                  <li>Pilih paket yang sesuai dengan kebutuhan Anda</li>
+                  <li>Isi formulir pendaftaran dengan lengkap</li>
+                  <li>Tim kami akan menghubungi Anda dalam 24 jam</li>
+                  <li>Setelah konfirmasi, tim teknisi akan datang untuk pemasangan</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3" data-aos="fade-up">
+          <div class="card h-100">
+            <div class="card-header">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse2">
+                Berapa lama proses pemasangan?
+              </button>
+            </div>
+            <div id="collapse2" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                Proses pemasangan biasanya memakan waktu 2-3 hari kerja setelah konfirmasi area coverage dan pembayaran.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3" data-aos="fade-up">
+          <div class="card h-100">
+            <div class="card-header">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse3">
+                Bagaimana cara pembayaran bulanan?
+              </button>
+            </div>
+            <div id="collapse3" class="collapse" data-parent="#faqAccordion">
+              <div class="card-body">
+                <ul>
+                  <li>Transfer bank</li>
+                  <li>E-wallet (OVO, GoPay, DANA)</li>
+                  <li>Kartu kredit</li>
+                  <li>Mini market</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="contact-section" data-aos="fade-up">
+        <h3 class="text-center mb-4">Butuh bantuan lebih lanjut?</h3>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="contact-card">
+              <i class="fas fa-phone-alt fa-2x"></i>
+              <h5>Call Center</h5>
+              <p>0800-1234-5678</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="contact-card">
+              <i class="fas fa-envelope fa-2x"></i>
+              <h5>Email</h5>
+              <p>support@mynet.com</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="contact-card">
+              <i class="fab fa-whatsapp fa-2x"></i>
+              <h5>WhatsApp</h5>
+              <p>+62 812-3456-7890</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-3">
+            <h5>Area Cakupan Mynet</h5>
+            <p>
+              Jabodetabek, Bandung, Bali, Medan, Surabaya, Semarang, Batam,
+              Malang, Palembang, Makassar
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <h5>Customer Service</h5>
+            <p>Untuk bantuan lebih lanjut, silakan hubungi kami.</p>
+            <button class="btn tombol">Hubungi Kami</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+  </body>
+</html>

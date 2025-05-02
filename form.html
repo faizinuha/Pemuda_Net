@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+    <!-- Add Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
   <title>Daftar - Mynet</title>
 </head>
 
@@ -38,33 +41,26 @@
           aria-label="Toggle navigation">
           <div class="animated-icon3"><span></span><span></span><span></span></div>
         </button>
-        <a class="navbar-brand" href="#">My</a>
+        <a class="navbar-brand" href="index.html">My</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent22">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Beranda<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Produk</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-expanded="false">Promo </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Bantuan</a>
-                <a class="dropdown-item" href="#">Tentang Kami</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Bantuan</a>
+              <a class="nav-link" href="form.html">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Tentang Kami</a>
-            </li>
+              <a class="nav-link" href="promo.html">Promo</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bantuan.html">Bantuan</a>
             </li>
             <li class="nav-item">
-              <a href="form.html" type="button" class="btn tombol1">Daftar</a>
+              <a class="nav-link" href="about.html">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a href="form.html" type="button" class="btn tombol">Daftar</a>
             </li>
           </ul>
         </div>
@@ -81,36 +77,44 @@
             <img src="img/people.png" alt="registration" class="img-fluid">
             <h2 class="text-center mt-4">Bergabung dengan Mynet</h2>
             <p class="text-center">Dapatkan layanan internet terbaik untuk kebutuhan Anda</p>
+            
+            <!-- Tambah info kontak -->
+            <div class="contact-info mt-4">
+              <p><i class="bi bi-telephone-fill"></i> Hubungi kami: 081234567890</p>
+              <p><i class="bi bi-envelope-fill"></i> Email: info@mynet.com</p>
+            </div>
           </div>
         </div>
         <div class="col-lg-6">
           <h1 class="title text-center">Daftar Sekarang</h1>
-          <form id="registrationForm">
+          <form id="registrationForm" novalidate>
             <div class="form-group">
-              <label for="paket">Pilihan Paket</label>
-              <select class="form-control" id="paket" name="paket">
+              <label for="paket"><i class="bi bi-box-seam"></i> Pilihan Paket</label>
+              <select class="form-control" id="paket" name="paket" required>
                 <option value="hemat">Hemat - 15 MBPS (Rp 250.000)</option>
                 <option value="pas">Pas - 30 MBPS (Rp 320.000)</option>
                 <option value="super">Super - 50 MBPS (Rp 400.000)</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="name">Nama Lengkap</label>
-              <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Lengkap">
+              <label for="name"><i class="bi bi-person-fill"></i> Nama Lengkap</label>
+              <input type="text" class="form-control" id="name" placeholder="Masukkan Nama Lengkap" required>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+              <label for="email"><i class="bi bi-envelope-fill"></i> Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Masukkan Email" required>
             </div>
             <div class="form-group">
-              <label for="phone">Nomor Telepon</label>
-              <input type="tel" class="form-control" id="phone" placeholder="Masukkan Nomor Telepon">
+              <label for="phone"><i class="bi bi-telephone-fill"></i> Nomor Telepon</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Contoh: 081234567890" required>
             </div>
             <div class="form-group">
-              <label for="address">Alamat</label>
-              <textarea class="form-control" id="address" rows="1" placeholder="Masukkan Alamat"></textarea>
+              <label for="address"><i class="bi bi-geo-alt-fill"></i> Alamat</label>
+              <textarea class="form-control" id="address" rows="2" placeholder="Masukkan Alamat Lengkap" required></textarea>
             </div>
-            <button type="submit" class="btn tombol1 btn-block"  >Daftar via WhatsApp</button>
+            <button type="submit" class="btn tombol1 btn-block">
+              <i class="bi bi-whatsapp"></i> Daftar via WhatsApp
+            </button>
           </form>
         </div>
       </div>

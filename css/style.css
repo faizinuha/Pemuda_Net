@@ -192,8 +192,8 @@ footer a:hover {
 
 .about .flex-container {
   flex-direction: column;
-  padding: 5rem;
-  background: linear-gradient(111.95deg, #4e9f3d 0.36%, #f45a42 91.13%);
+  padding: 6rem;
+  background: linear-gradient(333.95deg, #3d999f 0.36%, #42b3f4 91.50%);
   background-repeat: no-repeat;
   background-size: auto 900px;
   border-radius: 30px;
@@ -249,7 +249,7 @@ footer a:hover {
 .card-about .rectangle {
   width: 150px;
   height: 120px;
-  background-color: #4e9f3d;
+  background-color: #3d9f82;
   border-radius: 20px;
   margin: auto;
   display: block;
@@ -326,7 +326,7 @@ h1 {
 /* Jumbotron */
 
 .jumbotron {
-  background: linear-gradient(111.95deg, #4e9f3d 0.36%, #f4a442 91.13%);
+  background: linear-gradient(111.95deg, #3d839f 0.36%, #42eef4 91.13%);
   height: 900px;
 }
 
@@ -720,7 +720,7 @@ footer .row.icon-awesome i {
   }
 
   .jumbotron {
-    background: linear-gradient(111.95deg, #4e9f3d 0.36%, #f45a42 91.13%);
+    background: linear-gradient(111.95deg, #3d649f 0.36%, #f45a42 91.13%);
     height: 1200px;
   }
 

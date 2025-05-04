@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- My CSS -->
+  <link rel="stylesheet" href="css/style.css" class="rel" />
+  <link rel="stylesheet" href="css/navbar_animation.css" class="rel" />
+  <link rel="stylesheet" href="css/speed-test.css" class="rel" />
+
+  <!-- My fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <title>Mynet</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <section class="navbar-sec">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light ">
+      <div class="container">
+        <button class="navbar-toggler text-danger third-button" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <div class="animated-icon3"><span></span><span></span><span></span></div>
+        </button>
+        <a class="navbar-brand" href="index.html">My</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Beranda<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Test_konneksi.html">Speed Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="promo.html">Promo</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bantuan.html">Bantuan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a href="form.html" type="button" class="btn tombol">Daftar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- Speed Test & Device Info Section -->
+  <section class="speed-test-section mt-5 pt-5">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center mb-4">Network Information</h2>
+          
+          <div class="network-info-container">
+            <!-- Device Info -->
+            <div class="info-box">
+              <h4>Device Information</h4>
+              <div id="deviceInfo" class="info-content">
+                <p><strong>Browser:</strong> <span id="browserInfo">Loading...</span></p>
+                <p><strong>Operating System:</strong> <span id="osInfo">Loading...</span></p>
+                <p><strong>Screen Resolution:</strong> <span id="screenInfo">Loading...</span></p>
+              </div>
+            </div>
+
+            <!-- Network Info -->
+            <div class="info-box">
+              <h4>Network Information</h4>
+              <div id="networkInfo" class="info-content">
+                <p><strong>IP Address:</strong> <span id="ipAddress">Loading...</span></p>
+                <p><strong>Connection Type:</strong> <span id="connectionType">Loading...</span></p>
+                <p><strong>Network Speed:</strong> <span id="networkSpeed">Loading...</span></p>
+              </div>
+            </div>
+
+            <!-- ISP and Location Information -->
+            <div class="info-box">
+              <h4>ISP and Location</h4>
+              <div class="info-content">
+                <p><strong>ISP:</strong> <span id="ispInfoTest">Loading...</span></p>
+                <p><strong>Location:</strong> <span id="locationInfoTest">Loading...</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Speed Test -->
+          <div class="info-box mt-4">
+            <div class="text-center">
+              <button id="startTestButton" class="btn btn-primary">Start Speed Test</button>
+              <div id="speedResultTest" class="mt-3">
+                <div class="progress mb-3">
+                  <div id="progressBarTest" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+                <div id="testResultsTest" class="d-none">
+                  <h5>Test Results</h5>
+                  <div class="test-results-container">
+                    <div class="result-item">
+                      <p><strong>Download Speed</strong></p>
+                      <p><span id="downloadSpeedTest">-</span> Mbps</p>
+                    </div>
+                    <div class="result-item">
+                      <p><strong>Latency</strong></p>
+                      <p><span id="latencyTest">-</span> ms</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="spinner-overlay">
+                <div class="spinner"></div>
+                <p>Mohon Tunggu...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Speed Test Chart -->
+          <div class="info-box mt-4">
+            <h4>Speed Test Chart</h4>
+            <div class="chart-container">
+              <canvas id="speedTestChartTest" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Scripts -->
+  <script src="js/jquery.slim.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <!-- Added Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Add animation for hamburger menu
+    $(document).ready(function () {
+      $('.third-button').on('click', function () {
+        $('.animated-icon3').toggleClass('open');
+      });
+    });
+  </script>
+  <script src="js/network-info.js"></script>
+</body>
+</html>

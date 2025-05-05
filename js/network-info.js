@@ -4,35 +4,71 @@ function getDeviceInfo() {
     const osInfo = document.getElementById('osInfo');
     const screenInfo = document.getElementById('screenInfo');
 
-    // Detect browser
-    const userAgent = navigator.userAgent;
+    // Detect browser more accurately
+    const userAgent = navigator.userAgent.toLowerCase();
     let browser = "Unknown";
-    if (userAgent.match(/chrome|chromium|crios/i)) {
-        browser = "Chrome";
-    } else if (userAgent.match(/firefox|fxios/i)) {
-        browser = "Firefox";
-    } else if (userAgent.match(/safari/i)) {
-        browser = "Safari";
-    } else if (userAgent.match(/opr\//i)) {
-        browser = "Opera";
-    } else if (userAgent.match(/edg/i)) {
+    
+    // More accurate browser detection
+    if (userAgent.includes("edg/")) {
         browser = "Edge";
+    } else if (userAgent.includes("opr/") || userAgent.includes("opera")) {
+        browser = "Opera";
+    } else if (userAgent.includes("chrome")) {
+        browser = "Chrome";
+    } else if (userAgent.includes("firefox")) {
+        browser = "Firefox";
+    } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
+        browser = "Safari";
     }
 
-    // Detect OS
+    // More accurate OS detection
     let os = "Unknown";
-    if (navigator.userAgent.indexOf("Win") != -1) os = "Windows";
-    if (navigator.userAgent.indexOf("Mac") != -1) os = "MacOS";
-    if (navigator.userAgent.indexOf("Linux") != -1) os = "Linux";
-    if (navigator.userAgent.indexOf("Android") != -1) os = "Android";
-    if (navigator.userAgent.indexOf("iOS") != -1) os = "iOS";
+    const platform = navigator.platform.toLowerCase();
+    const macosPlatforms = ['macintosh', 'macintel', 'macppc', 'mac68k'];
+    const windowsPlatforms = ['win32', 'win64', 'windows', 'wince'];
+    const iosPlatforms = ['iphone', 'ipad', 'ipod'];
 
-    // Screen resolution
-    const resolution = `${window.screen.width}x${window.screen.height}`;
+    // First check for mobile devices using more reliable methods
+    if (/android/i.test(userAgent)) {
+        os = "Android";
+    } else if (iosPlatforms.indexOf(platform) !== -1 || 
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0)) {
+        os = "iOS";
+    } else if (macosPlatforms.indexOf(platform) !== -1) {
+        os = "MacOS";
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = "Windows";
+    } else if (/linux/.test(platform)) {
+        os = /android/i.test(userAgent) ? "Android" : "Linux";
+    }
 
-    browserInfo.textContent = `${browser}`;
-    osInfo.textContent = `${os}`;
-    screenInfo.textContent = `${resolution}`;
+    // Additional mobile detection
+    if (os === "Unknown") {
+        if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+            if (/iphone|ipad|ipod/i.test(userAgent)) {
+                os = "iOS";
+            } else if (/android/i.test(userAgent)) {
+                os = "Android";
+            } else {
+                os = "Mobile";
+            }
+        }
+    }
+
+    // More detailed screen info for mobile
+    let resolution = `${window.screen.width}x${window.screen.height}`;
+    if (window.devicePixelRatio && window.devicePixelRatio !== 1) {
+        resolution += ` (${window.devicePixelRatio}x)`;
+    }
+
+    browserInfo.textContent = browser;
+    osInfo.textContent = os;
+    screenInfo.textContent = resolution;
+
+    // Add mobile-specific class to body if on mobile
+    if (os === "Android" || os === "iOS" || os === "Mobile") {
+        document.body.classList.add('mobile-device');
+    }
 }
 
 // Network Information Detection
@@ -349,37 +385,37 @@ async function saveTestResults(deviceInfo, networkInfo, testResults) {
 }
 
 // Function to show download confirmation dialog
-function showDownloadConfirmation() {
-    return new Promise((resolve) => {
-        const modal = document.createElement('div');
-        modal.className = 'download-modal';
-        modal.innerHTML = `
-            <div class="download-modal-content">
-                <h3>Simpan Hasil Test</h3>
-                <p>Apakah Anda ingin menyimpan hasil test ini?</p>
-                <div class="download-modal-buttons">
-                    <button class="btn btn-secondary" id="cancelDownload">Batal</button>
-                    <button class="btn btn-primary" id="confirmDownload">Simpan</button>
-                </div>
-            </div>
-        `;
+// function showDownloadConfirmation() {
+//     return new Promise((resolve) => {
+//         const modal = document.createElement('div');
+//         modal.className = 'download-modal';
+//         modal.innerHTML = `
+//             <div class="download-modal-content">
+//                 <h3>Simpan Hasil Test</h3>
+//                 <p>Apakah Anda ingin menyimpan hasil test ini?</p>
+//                 <div class="download-modal-buttons">
+//                     <button class="btn btn-secondary" id="cancelDownload">Batal</button>
+//                     <button class="btn btn-primary" id="confirmDownload">Simpan</button>
+//                 </div>
+//             </div>
+//         `;
 
-        document.body.appendChild(modal);
+//         document.body.appendChild(modal);
 
-        const confirmBtn = document.getElementById('confirmDownload');
-        const cancelBtn = document.getElementById('cancelDownload');
+//         const confirmBtn = document.getElementById('confirmDownload');
+//         const cancelBtn = document.getElementById('cancelDownload');
 
-        confirmBtn.onclick = () => {
-            document.body.removeChild(modal);
-            resolve(true);
-        };
+//         confirmBtn.onclick = () => {
+//             document.body.removeChild(modal);
+//             resolve(true);
+//         };
 
-        cancelBtn.onclick = () => {
-            document.body.removeChild(modal);
-            resolve(false);
-        };
-    });
-}
+//         cancelBtn.onclick = () => {
+//             document.body.removeChild(modal);
+//             resolve(false);
+//         };
+//     });
+// }
 
 // Function to show notification
 function showNotification(message, type = 'info') {

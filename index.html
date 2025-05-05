@@ -48,7 +48,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="promo.html">Promo</a>
-              </li>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="bantuan.html">Bantuan</a>
             </li>
@@ -75,58 +75,106 @@
               <p class="lead">Mynet memberikanmu paket internet termurah dengan tv terlengkap.</p>
               <div class="btn-jumbo">
                 <a href="form.html" type="button" class=" btn tombol ">Daftar</a>
-                <a href="#" type="button" class="btn tombol-transparan" onclick="checkLocation()"><i class="fas fa-map-marker-alt pr-3"></i>Cek
+                <a href="#" type="button" class="btn tombol-transparan" onclick="checkLocationAndSave()"><i
+                    class="fas fa-map-marker-alt pr-3"></i>Cek
                   Jangkauan</a>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                  function checkLocation() {
-                  if (navigator.geolocation) {
-                    navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
-                    if (result.state === 'granted' || result.state === 'prompt') {
-                      navigator.geolocation.getCurrentPosition(
-                      function (position) {
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
+                  function checkLocationAndSave() {
+                    if (navigator.geolocation) {
+                      navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+                        if (result.state === 'granted' || result.state === 'prompt') {
+                          navigator.geolocation.getCurrentPosition(function (position) {
+                            const latitude = position.coords.latitude;
+                            const longitude = position.coords.longitude;
 
-                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
-                        .then(response => response.json())
-                        .then(data => {
-                          const village = data.address.village || data.address.hamlet || "Tidak diketahui";
-                          const county = data.address.county || "Tidak diketahui";
-                          Swal.fire({
-                          title: 'Lokasi Anda',
-                          html: `Desa: ${village}<br>Kabupaten: ${county}<br><br>Jika Anda mau, silakan pergi ke <a href="Test_konneksi.html">Speedtest</a> untuk cek WiFi Anda.`,
-                          icon: 'info',
-                          confirmButtonText: 'OK'
+                            // GET LOKASI DARI Koordinat
+                            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+                              .then(response => response.json())
+                              .then(data => {
+                                const village = data.address.village || data.address.hamlet || "Tidak diketahui";
+                                const county = data.address.county || "Tidak diketahui";
+
+                                // GET IP & ISP dari ipinfo.io
+                                fetch('https://ipinfo.io/json?token=35f0f89e4080d3')
+                                  .then(res => res.json())
+                                  .then(ipData => {
+                                    const ipAddress = ipData.ip;
+                                    const isp = ipData.org || "Tidak diketahui";
+                                    const deviceName = navigator.userAgent;
+
+                                    const payload = {
+                                      ipAddress,
+                                      isp,
+                                      deviceName,
+                                      location: {
+                                        // datatime,
+                                        village,
+                                        county,
+                                        latitude,
+                                        longitude
+                                      }
+                                    };
+
+                                    fetch('save.php', {
+                                      method: 'POST',
+                                      headers: {
+                                        'Content-Type': 'application/json'
+                                      },
+                                      body: JSON.stringify(payload)
+                                    }).then(() => {
+                                      Swal.fire({
+                                        title: 'Lokasi Anda',
+                                        html: `
+                        Desa: ${village}<br>
+                        Kabupaten: ${county}<br>
+                        Jam: ${new Date().toLocaleString()}<br>
+                        IP: ${ipAddress}<br>
+                        ISP: ${isp}<br><br>
+                        pesan:
+                           <strong>Terima kasih telah menggunakan layanan kami!</strong><br>
+                          Kami akan segera menghubungi Anda untuk memberikan informasi lebih lanjut.<br>
+                          Jika Anda mau, silakan pergi ke <a href="Test_konneksi.html">Speedtest</a> untuk cek WiFi Anda.<br>
+                      `,
+                                        icon: 'info',
+                                        confirmButtonText: 'OK'
+                                      });
+                                    }).catch(() => {
+                                      Swal.fire({
+                                        title: 'Error',
+                                        text: 'Gagal menyimpan data.',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                      });
+                                    });
+                                  });
+                              })
+                              .catch(() => {
+                                Swal.fire({
+                                  title: 'Error',
+                                  text: 'Gagal mendapatkan informasi lokasi.',
+                                  icon: 'error',
+                                  confirmButtonText: 'OK'
+                                });
+                              });
                           });
-                        })
-                        .catch(() => {
+                        } else {
                           Swal.fire({
-                          title: 'Error',
-                          text: 'Gagal mendapatkan informasi lokasi.',
-                          icon: 'error',
-                          confirmButtonText: 'OK'
+                            title: 'Akses Lokasi Ditolak',
+                            text: 'Silakan izinkan akses lokasi di pengaturan browser Anda.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
                           });
-                        });
-                      }
-                      );
+                        }
+                      });
                     } else {
                       Swal.fire({
-                      title: 'Akses Lokasi Ditolak',
-                      text: 'Silakan izinkan akses lokasi di pengaturan browser Anda.',
-                      icon: 'error',
-                      confirmButtonText: 'OK'
+                        title: 'Geolocation Tidak Didukung',
+                        text: 'Geolocation tidak didukung oleh browser Anda.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
                       });
                     }
-                    });
-                  } else {
-                    Swal.fire({
-                    title: 'Geolocation Tidak Didukung',
-                    text: 'Geolocation tidak didukung oleh browser Anda.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                    });
-                  }
                   }
                 </script>
               </div>
@@ -312,7 +360,7 @@
           <p>Tenang, kamu dapat menghubungi Mister Net untuk berkonsultasi mengenai paket yang paling cocok dengan
             kamu.
             Yuk! Segera tanya Mister Net sekarang!</p>
-            <p>Coba Lihat Produk kami <a href="promo.html">Promo</a></p>
+          <p>Coba Lihat Produk kami <a href="promo.html">Promo</a></p>
         </div>
         <div class="col-lg-6">
           <img src="img/people.png" alt="konsultasi" class="img">
@@ -346,7 +394,7 @@
         <div class="col-lg-3">
           <h1>Customer Service</h1>
           <p>Untuk bantuan lebih lanjut, silakan hubungi kami.</p>
-          <button class="btn tombol" id="customer-service" >Hubungi Kami</button>
+          <button class="btn tombol" id="customer-service">Hubungi Kami</button>
         </div>
       </div>
       <div class="row title-brand-footer justify-content-center">
